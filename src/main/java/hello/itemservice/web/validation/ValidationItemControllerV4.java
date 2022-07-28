@@ -109,4 +109,8 @@ public class ValidationItemControllerV4 {
 }
 
 
+//상품 정보를 등록할때와 수정할때의 검증 처리를 편리하게 하기 위해
+//등록객체와 수정객체를 따로 만들어서 사용한다.
+
+
 //Complite

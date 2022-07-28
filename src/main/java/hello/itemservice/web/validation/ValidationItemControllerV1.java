@@ -96,3 +96,5 @@ public class ValidationItemControllerV1 {
 
 }
 
+
+// errors Map 을 생성하여 error 정보를 담는다.

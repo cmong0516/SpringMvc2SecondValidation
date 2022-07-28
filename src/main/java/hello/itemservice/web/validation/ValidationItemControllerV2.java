@@ -28,6 +28,7 @@ public class ValidationItemControllerV2 {
 
     @InitBinder
     public void init(WebDataBinder dataBinder) {
+        log.info("init binder {}", dataBinder);
         dataBinder.addValidators(itemValidator);
     }
 
@@ -159,8 +160,10 @@ public class ValidationItemControllerV2 {
 //    @PostMapping("/add")
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
+        // BindingResult 는 검증해야할 객체 다음에 오기때문에 검증해야할 객체를 알고있다 .
         log.info("objectName={}", bindingResult.getObjectName());
         log.info("target={}", bindingResult.getTarget());
+
 
         if (!StringUtils.hasText(item.getItemName())) {
             bindingResult.rejectValue("itemName", "required");
@@ -242,3 +245,9 @@ public class ValidationItemControllerV2 {
 
 }
 
+
+
+// BindingResult bindingResult 를 사용하여 에러정보를 담는다. Object Field Message.
+// th:errors : 해당 필드에 오류가 있는 경우에 태그를 출력한다. th:if 의 편의 버전이다.
+// th:errorclass : th:field 에서 지정한 필드에 오류가 있으면 class 정보를 추가한다.
+// 문제점 : 새상품 등록을 할때 error 가 발생하면 에러페이지로 이동하면서 이용자가 작성하던 데이터가 사라진다.

@@ -50,8 +50,9 @@ public class ValidationItemControllerV3 {
         //특정 필드가 아닌 복합 룰 검증
         if (item.getPrice() != null && item.getQuantity() != null) {
             int resultPrice = item.getPrice() * item.getQuantity();
-            if (resultPrice < 10000) {
-                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+            int minPrice = 10000;
+            if (resultPrice < minPrice) {
+                bindingResult.reject("totalPriceMin", new Object[]{minPrice, resultPrice}, null);
             }
         }
 
